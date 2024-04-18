@@ -1,0 +1,8 @@
+task default: %w[build]
+
+task :build do
+  gem_info = Gem::Specification::load("broker_full.gemspec")
+  sh 'gem build broker_full.gemspec'
+  puts "broker_full-#{gem_info.version}.gem"
+  sh "mv broker_full-#{gem_info.version}.gem gems/0.X"
+end
